@@ -2,9 +2,9 @@
 
 [ ] Home Page
   [ ] Routes
-    [ ] /
-    [ ] /details
-    [ ] /addMovie
+    [x] /
+    [x] /details
+    [x] /addMovie
   [ ] Add Descriptions
 
 [ ] index.js
@@ -19,14 +19,14 @@
 [ ] App.js
   [ ] Routes
     [x] /
-    [ ] /details
-    [ ] /addMovie
+    [x] /details
+    [x] /addMovie
 
 [ ] MovieList.jsx
   [x] useEffect
   [x] .map
-  [ ] onClick img => navigate to details page
-
+  [ ] onClick of IMAGE => navigate to details page
+      [ ] this is going to take some req.params/:id magic
 [ ] DetailPage.jsx
   [ ] show all details
   [ ] including all genres
@@ -59,7 +59,7 @@
     [ ] INSERT INTO "movies"
     [ ] INSERT INTO "movie_genres"
 
-[ ] Stretch Goals Haiku
+[ ] Stretch Goals: A Haiku
   [ ] hahahahaha
   [ ] ahahahahahaha
   [ ] hahahahaha
