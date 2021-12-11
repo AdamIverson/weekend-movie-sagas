@@ -42,8 +42,9 @@
       [x] TEXTAREA - for description
       [x] Dropdown Menu for genres
     [ ] Buttons
-      [ ] Cancel => navigate "/"
-      [ ] Save - POST Route
+      [x] Cancel => navigate "/"
+      [x] Save
+        [ ] POST Route
     [ ] Wire Inputs
 
 [ ] server.js
