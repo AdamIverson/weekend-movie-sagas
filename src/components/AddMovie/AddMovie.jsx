@@ -1,4 +1,18 @@
+import { useHistory } from 'react-router-dom'
+
 function AddMovie() {
+
+  const history = useHistory();
+
+  const navHome = () => {
+    history.push('/');
+  }
+
+  const submitMovie = () => {
+    console.log('Save Click');
+    return;
+  }
+
   return (
     <div>
       <p>Add Movie Page</p>
@@ -19,6 +33,9 @@ function AddMovie() {
             </option>
           </select>
           <label>Select Movie Genre</label>
+          <br></br>
+          <button onClick={navHome}>Cancel</button>
+          <button onClick={submitMovie}>Save</button>
         </form>
     </div>
   )
