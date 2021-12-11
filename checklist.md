@@ -25,8 +25,8 @@
 [ ] MovieList.jsx
   [x] useEffect
   [x] .map
-  [ ] onClick img => navigate to details page
-
+  [ ] onClick of IMAGE => navigate to details page
+      [ ] this is going to take some req.params/:id magic
 [ ] DetailPage.jsx
   [ ] show all details
   [ ] including all genres
