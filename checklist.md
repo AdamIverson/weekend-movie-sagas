@@ -2,9 +2,9 @@
 
 [ ] Home Page
   [ ] Routes
-    [ ] /
-    [ ] /details
-    [ ] /addMovie
+    [x] /
+    [x] /details
+    [x] /addMovie
   [ ] Add Descriptions
 
 [ ] index.js
@@ -19,8 +19,8 @@
 [ ] App.js
   [ ] Routes
     [x] /
-    [ ] /details
-    [ ] /addMovie
+    [x] /details
+    [x] /addMovie
 
 [ ] MovieList.jsx
   [x] useEffect
@@ -59,7 +59,7 @@
     [ ] INSERT INTO "movies"
     [ ] INSERT INTO "movie_genres"
 
-[ ] Stretch Goals Haiku
+[ ] Stretch Goals: A Haiku
   [ ] hahahahaha
   [ ] ahahahahahaha
   [ ] hahahahaha
