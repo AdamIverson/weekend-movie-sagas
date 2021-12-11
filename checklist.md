@@ -32,18 +32,19 @@
   [ ] including all genres
   [ ] GET request for specific movie
     [ ] req.params & :id
-  [ ] Button: Back to List
+  [x] Button: Back to List
 
 [ ] AddMovie.jsx
   [ ]Form
-    [ ] Inputs WITH Labels
-      [ ] Movie Title
-      [ ] Movie Poster URL
-      [ ] TEXTAREA - for description
-      [ ] Dropdown Menu for genres
+    [x] Inputs WITH Labels
+      [x] Movie Title
+      [x] Movie Poster URL
+      [x] TEXTAREA - for description
+      [x] Dropdown Menu for genres
     [ ] Buttons
       [ ] Cancel => navigate "/"
       [ ] Save - POST Route
+    [ ] Wire Inputs
 
 [ ] server.js
   [ ] Routes
