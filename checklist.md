@@ -1,3 +1,5 @@
+# Checklist
+
 [ ] Home Page
   [ ] Routes
     [ ] /
@@ -34,7 +36,7 @@
 
 [ ] AddMovie.jsx
   [ ]Form
-    [ ] Inputs
+    [ ] Inputs WITH Labels
       [ ] Movie Title
       [ ] Movie Poster URL
       [ ] TEXTAREA - for description
