@@ -51,6 +51,8 @@ const genres = (state = [], action) => {
 };
 
 const selectedMovie = (state = {}, action) => {
+  console.log('In SELECTED MOVIE *********************');
+  
   switch(action.type) {
     case 'SET_SELECTED_MOVIE':
       return action.payload;

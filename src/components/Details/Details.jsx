@@ -1,11 +1,14 @@
 import { useHistory } from 'react-router-dom'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import MovieList from '../MovieList/MovieList';
 
 function Details() {
   const selectedMovie = useSelector((store) => store.selectedMovie);
   const history = useHistory();
   const dispatch = useDispatch();
+
+  console.log('in DETAILS', selectedMovie);
 
   useEffect(() => {
     dispatch({ type: 'FETCH_MOVIES' });
@@ -19,10 +22,13 @@ function Details() {
   return (
     <section>
       <p>Details Page</p>
+
+      {/* <p>{selectedMovie.title}</p> */}
       {
-        selectedMovie.name ? (
+        selectedMovie.title ? (
           <>
-            <h2>{selectedMovie.name}</h2>
+            <h2>{selectedMovie.title}</h2>
+            <img src={selectedMovie.poster} />
             <p>{selectedMovie.description}</p>
           </>
         ) : (
