@@ -61,6 +61,7 @@ const genres = (state = [], action) => {
   }
 };
 
+//used to store selected movie
 const selectedMovie = (state = {}, action) => {
   console.log('In SELECTED MOVIE *********************');
   
