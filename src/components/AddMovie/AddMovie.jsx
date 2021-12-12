@@ -8,11 +8,11 @@ function AddMovie() {
   const history = useHistory();
   console.log(genres);
 
+  let [genre_id, setGenreId] = useState('')
   let [newMovie, setNewMovie] = useState({
     title: "",
     poster: "",
     description: "",
-    genre: ""
   });
 
   const handleTitleChange = (event) => {
@@ -24,21 +24,21 @@ function AddMovie() {
 
   const handlePosterChange = (event) => {
     setNewMovie({
-      ...NewMovie,
+      ...newMovie,
       poster: event.target.value,
     });
   };
 
   const handleDescriptionChange = (event) => {
     setNewMovie({
-      ...NewMovie,
+      ...newMovie,
       description: event.target.value,
     });
   };
 
   const handleGenreChange = (event) => {
-    setNewMovie({
-      ...NewMovie,
+    setGenreId({
+      ...genre_id,
       genre: event.target.value,
     })
   }
@@ -77,7 +77,7 @@ function AddMovie() {
           type="text"></textarea>
         <label>Add Movie Description</label>
         <br></br>
-        <select value={genre_id}>
+        <select value={genre_id} onChange={handleGenreChange}>
           <option disabled value="0">
             Select Genre
           </option>
