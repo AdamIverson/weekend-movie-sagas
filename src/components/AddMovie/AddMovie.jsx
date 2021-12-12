@@ -1,44 +1,46 @@
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function AddMovie() {
   const genres = useSelector((store) => store.genres);
   const dispatch = useDispatch();
   const history = useHistory();
-  console.log(genres);
+  console.log('in ADD MOVIE', genres);
 
-  let [genre_id, setGenreId] = useState('')
-  let [newMovie, setNewMovie] = useState({
-    title: "",
-    poster: "",
-    description: "",
-  });
+  useEffect(() => {
+    dispatch({ type: "FETCH_GENRES" });
+  }, []);
+
+  let [newTitle, setNewTitle] = useState('');
+  let [newGenre, setNewGenre] = useState('');
+  let [newPoster, setNewPoster] = useState('');
+  let [newDescription, setNewDescription] = useState('');
 
   const handleTitleChange = (event) => {
-    setNewMovie({
-      ...newMovie,
+    setNewTitle({
+      ...newTitle,
       title: event.target.value,
     });
   };
 
   const handlePosterChange = (event) => {
-    setNewMovie({
-      ...newMovie,
+    setNewPoster({
+      ...newPoster,
       poster: event.target.value,
     });
   };
 
   const handleDescriptionChange = (event) => {
-    setNewMovie({
-      ...newMovie,
+    setNewDescription({
+      ...newDescription,
       description: event.target.value,
     });
   };
 
   const handleGenreChange = (event) => {
-    setGenreId({
-      ...genre_id,
+    setNewGenre({
+      ...newGenre,
       genre: event.target.value,
     })
   }
@@ -50,7 +52,12 @@ function AddMovie() {
   const addNewMovie = (event) => {
     dispatch({
       type: "ADD_MOVIE",
-      payload: { newMovie }
+      payload: {
+        title: newTitle,
+        poster: newPoster,
+        description: newDescription,
+        genre: newGenre
+      }
     })
   }
 
@@ -77,13 +84,13 @@ function AddMovie() {
           type="text"></textarea>
         <label>Add Movie Description</label>
         <br></br>
-        <select value={genre_id} onChange={handleGenreChange}>
+        <select value={newGenre.id} onChange={handleGenreChange}>
           <option disabled value="0">
             Select Genre
           </option>
           {genres.map((genre) => {
             return (
-              <option key={genre.id} value={genre.id}>
+              <option key={genre.id} value={genre.name}>
                 {genre.name}
               </option>
             );
