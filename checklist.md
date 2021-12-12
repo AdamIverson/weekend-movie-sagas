@@ -28,10 +28,10 @@
   [ ] onClick of IMAGE => navigate to details page
       [ ] this is going to take some req.params/:id magic
 [ ] DetailPage.jsx
-  [ ] show all details
+  [x] show all details
   [ ] including all genres
-  [ ] GET request for specific movie
-    [ ] req.params & :id
+  [x] GET request for specific movie
+    [x] req.params & :id
   [x] Button: Back to List
 
 [ ] AddMovie.jsx
@@ -44,7 +44,7 @@
     [ ] Buttons
       [x] Cancel => navigate "/"
       [x] Save
-        [ ] POST Route
+        [x] POST Route
     [ ] Wire Inputs
 
 [ ] server.js
