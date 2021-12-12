@@ -1,61 +1,101 @@
-import { useHistory } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useState } from "react";
 
 function AddMovie() {
-  const genres = useSelector((store) => store.genres)
+  const genres = useSelector((store) => store.genres);
   const dispatch = useDispatch();
   const history = useHistory();
-console.log(genres);
+  console.log(genres);
+
   let [newMovie, setNewMovie] = useState({
     title: "",
     poster: "",
-    description: ""
-  })
+    description: "",
+    genre: ""
+  });
 
+  const handleTitleChange = (event) => {
+    setNewMovie({
+      ...newMovie,
+      title: event.target.value,
+    });
+  };
 
-  const navHome = () => {
-    history.push('/');
+  const handlePosterChange = (event) => {
+    setNewMovie({
+      ...NewMovie,
+      poster: event.target.value,
+    });
+  };
+
+  const handleDescriptionChange = (event) => {
+    setNewMovie({
+      ...NewMovie,
+      description: event.target.value,
+    });
+  };
+
+  const handleGenreChange = (event) => {
+    setNewMovie({
+      ...NewMovie,
+      genre: event.target.value,
+    })
   }
 
-  const submitMovie = () => {
-    console.log('Save Click');
-    return;
+  const navHome = () => {
+    history.push("/");
+  };
+
+  const addNewMovie = (event) => {
+    dispatch({
+      type: "ADD_MOVIE",
+      payload: { newMovie }
+    })
   }
 
   return (
     <div>
       <p>Add Movie Page</p>
 
-        <form>
-          <input placeholder="Movie Title" />
-          <label>Add Movie Title</label>
-          <br></br>
-          <input placeholder="Movie Poster URL" />
-          <label>Add Movie Poster URL</label>
-          <br></br>
-          <textarea placeholder="Add Movie Description"></textarea>
-          <label>Add Movie Description</label>
-          <br></br>
-          <select>
-            <option disabled value='0'>
-              Select Genre
-            </option>
-            {genres.map((genre) => {
-              return (
-                <option key={genre.id} value={genre.id}>
-                  {genre.name}
-                </option>
-              );
-            })}
-          </select>
-          <label>Select Movie Genre</label>
-          <br></br>
-          <button onClick={navHome}>Cancel</button>
-          <button onClick={submitMovie}>Save</button>
-        </form>
+      <form onSubmit={(event) => addNewMovie(event)}>
+        <input 
+          onChange={handleTitleChange} 
+          placeholder="Movie Title" 
+          type="text"/>
+        <label>Add Movie Title</label>
+        <br></br>
+        <input 
+          onChange={handlePosterChange} 
+          placeholder="Movie Poster URL"
+          type="text"/>
+        <label>Add Movie Poster URL</label>
+        <br></br>
+        <textarea 
+          onChange={handleDescriptionChange} 
+          placeholder="Add Movie Description"
+          type="text"></textarea>
+        <label>Add Movie Description</label>
+        <br></br>
+        <select value={genre_id}>
+          <option disabled value="0">
+            Select Genre
+          </option>
+          {genres.map((genre) => {
+            return (
+              <option key={genre.id} value={genre.id}>
+                {genre.name}
+              </option>
+            );
+          })}
+        </select>
+        <label>Select Movie Genre</label>
+        <br></br>
+        <button type="button" onClick={navHome}>Cancel</button>
+        <button type="submit" onClick={addNewMovie}>Save</button>
+      </form>
     </div>
-  )
-};
+  );
+}
 
 export default AddMovie;
