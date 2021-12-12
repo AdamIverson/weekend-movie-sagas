@@ -18,8 +18,13 @@ function MovieList() {
         history.push(`/details?id=${movie.id}`);
     }
 
+    const navigateToAddMovie = () => {
+        history.push('/addMovie')
+    }
+
     return (
         <main>
+            <button onClick={navigateToAddMovie}>Add Movie</button>
             <h1>MovieList</h1>
             <section className="movies">
                 {movies.map(movie => {
