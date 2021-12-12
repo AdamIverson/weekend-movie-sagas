@@ -62,6 +62,22 @@
     [ ] INSERT INTO "movie_genres"
 
 [ ] Stretch Goals: A Haiku
-  [ ] hahahahaha
-  [ ] ahahahahahaha
-  [ ] hahahahaha
+  [ ] the haiku lived here
+  [ ] it no longer amused me
+  [ ] so i changed it pal
+
+  [ ] Saturday night sign off
+    [ ] Form needs Genres to register on submission
+      [ ] Submission probably doesn't entirely work yet
+      [ ] It's certainly not hitting the db
+    [ ] Details is not displaying Genres
+      [ ] where does that work get done
+      [ ] i want to do it here in a function
+      [ ] they probably wanted in done in a join table
+      [ ] i'd really rather do it here in a function
+      [ ] i have the movie id and the entire genre list
+      [ ] quickest way out of here might be piping in the movies_genres table and just chopping it up in a function
+      [ ] anything to avoid sql folks
+      [ ] i don't even mind sql
+      [ ] it's honestly so pleasant with its simplicity and absolutely unforgiving syntax
+      [ ] bedtime
