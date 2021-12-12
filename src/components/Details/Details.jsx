@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import MovieList from '../MovieList/MovieList';
 
 function Details() {
-  const selectedGenre = useSelector((store) => store.genres)
+  // const selectedGenre = useSelector((store) => store.genres)
   const selectedMovie = useSelector((store) => store.selectedMovie);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -12,7 +12,8 @@ function Details() {
   console.log('in DETAILS Movie', selectedMovie);
   console.log('in DETAILS GENRE', selectedGenre);
   useEffect(() => {
-  });
+    dispatch({ type: 'FETCH_GENRES' });
+  }, []);
 
   const navigateHome = () => {
     history.push("/")
