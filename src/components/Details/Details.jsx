@@ -13,11 +13,8 @@ function Details() {
   console.log('in DETAILS Movie', selectedMovie);
   console.log('in DETAILS Genres', selectedGenre);
   useEffect(() => {
-<<<<<<< HEAD
+
     dispatch({ type: 'FETCH_GENRES'})
-=======
-    dispatch({ type: 'FETCH_GENRES' });
->>>>>>> 542b234f245d45efa8c553f3ddec9116133da872
   }, []);
 
   const navigateHome = () => {
