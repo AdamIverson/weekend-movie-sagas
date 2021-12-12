@@ -6,7 +6,7 @@ function AddMovie() {
   const genres = useSelector((store) => store.genres);
   const dispatch = useDispatch();
   const history = useHistory();
-  console.log('in ADD MOVIE', genres);
+  // console.log('in ADD MOVIE', genres);
 
   useEffect(() => {
     dispatch({ type: "FETCH_GENRES" });
@@ -18,31 +18,19 @@ function AddMovie() {
   let [newDescription, setNewDescription] = useState('');
 
   const handleTitleChange = (event) => {
-    setNewTitle({
-      ...newTitle,
-      title: event.target.value,
-    });
+    setNewTitle(event.target.value);
   };
 
   const handlePosterChange = (event) => {
-    setNewPoster({
-      ...newPoster,
-      poster: event.target.value,
-    });
+    setNewPoster(event.target.value);
   };
 
   const handleDescriptionChange = (event) => {
-    setNewDescription({
-      ...newDescription,
-      description: event.target.value,
-    });
+    setNewDescription(event.target.value);
   };
 
   const handleGenreChange = (event) => {
-    setNewGenre({
-      ...newGenre,
-      genre: event.target.value,
-    })
+    setNewGenre(event.target.value)
   }
 
   const navHome = () => {
@@ -58,7 +46,7 @@ function AddMovie() {
         description: newDescription,
         genre: newGenre
       }
-    })
+    });
   }
 
   return (
