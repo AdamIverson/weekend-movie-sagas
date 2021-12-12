@@ -14,6 +14,7 @@ function Details() {
   console.log("in DETAILS GENRE SELECTED GENRE", selectedGenre);
   useEffect(() => {
     dispatch({ type: "FETCH_GENRES" });
+    dispatch({ type: "FETCH_ID" });
   }, []);
 
   const navigateHome = () => {

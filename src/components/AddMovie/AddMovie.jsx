@@ -9,6 +9,7 @@ function AddMovie() {
   // console.log('in ADD MOVIE', genres);
 
   useEffect(() => {
+    dispatch({ type: "FETCH_ID"});
     dispatch({ type: "FETCH_GENRES" });
   }, []);
 
@@ -38,6 +39,7 @@ function AddMovie() {
   };
 
   const addNewMovie = (event) => {
+    console.log('addNewMovie click');
     dispatch({
       type: "ADD_MOVIE",
       payload: {
