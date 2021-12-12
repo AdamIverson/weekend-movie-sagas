@@ -9,7 +9,6 @@ function AddMovie() {
   // console.log('in ADD MOVIE', genres);
 
   useEffect(() => {
-    dispatch({ type: "FETCH_ID"});
     dispatch({ type: "FETCH_GENRES" });
   }, []);
 
@@ -40,6 +39,8 @@ function AddMovie() {
 
   const addNewMovie = (event) => {
     console.log('addNewMovie click');
+    event.preventDefault();
+
     dispatch({
       type: "ADD_MOVIE",
       payload: {
@@ -57,25 +58,29 @@ function AddMovie() {
 
       <form onSubmit={(event) => addNewMovie(event)}>
         <input 
+          value={newTitle}
           onChange={handleTitleChange} 
           placeholder="Movie Title" 
-          type="text"/>
+          type="text"
+          required/>
         <label>Add Movie Title</label>
         <br></br>
         <input 
+          value={newPoster}
           onChange={handlePosterChange} 
           placeholder="Movie Poster URL"
           type="text"/>
         <label>Add Movie Poster URL</label>
         <br></br>
         <textarea 
+          value={newDescription}
           onChange={handleDescriptionChange} 
           placeholder="Add Movie Description"
           type="text"></textarea>
         <label>Add Movie Description</label>
         <br></br>
         <select value={newGenre.id} onChange={handleGenreChange}>
-          <option disabled value="0">
+          <option>
             Select Genre
           </option>
           {genres.map((genre) => {

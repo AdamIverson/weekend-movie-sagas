@@ -15,24 +15,31 @@ import axios from "axios";
 function* rootSaga() {
   yield takeEvery("FETCH_MOVIES", fetchAllMovies);
   yield takeEvery("FETCH_GENRES", fetchAllGenres);
-  yield takeEvery("FETCH_ID", fetchId)
+  // yield takeEvery("FETCH_ID", fetchId)
   yield takeEvery("ADD_MOVIE", addMovie);
 }
 
-function* fetchId() {
-  try {
-    const id = yield axios.get(`/api/movie/${action.payload}`);
-    yield put({ type: "SET_SELECTED_MOVIE", payload: id });
-  } catch {
-    console.log("add movie error");
-  }
-}
+// function* fetchId() {
+//   try {
+//     const id = yield axios.get(`/api/movie/${action.payload}`);
+//     yield put({ type: "SET_SELECTED_MOVIE", payload: id });
+//   } catch {
+//     console.log("add movie error");
+//   }
+// }
 
-function* addMovie() {
+function* addMovie(action) {
   try {
-    const movie = yield axios.post("/api/movie");
-    console.log("adding a dang movie", movie.data);
-    yield put({ type: "ADD_MOVIE", payload: movie.data });
+    console.log(action.payload);
+    
+    const movie = yield
+      axios({
+        method: 'POST',
+        url: '/api/movie',
+        data: action.payload
+      })
+    // console.log("adding a dang movie", movie.data);
+   yield put({ type: "FETCH_MOVIES" });
   } catch {
     console.log("add movie error");
   }
@@ -71,7 +78,17 @@ const movies = (state = [], action) => {
   }
 };
 
-// Used to store the movie genres
+// const newMovie = (state = [], action) => {
+//   switch(action.type) {
+//     case "NEW_MOVIE":
+//       console.log('in NEW MOVIE');
+//       return action.payload;
+//     default:
+//       return state;
+//   }
+// }
+
+ // Used to store the movie genres
 const genres = (state = [], action) => {
   switch (action.type) {
     case "SET_GENRES":
