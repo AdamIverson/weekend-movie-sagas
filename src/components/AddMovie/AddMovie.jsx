@@ -1,8 +1,18 @@
 import { useHistory } from 'react-router-dom'
+import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
 
 function AddMovie() {
-
+  const genres = useSelector((store) => store.genres)
+  const dispatch = useDispatch();
   const history = useHistory();
+console.log(genres);
+  let [newMovie, setNewMovie] = useState({
+    title: "",
+    poster: "",
+    description: ""
+  })
+
 
   const navHome = () => {
     history.push('/');
@@ -31,6 +41,13 @@ function AddMovie() {
             <option disabled value='0'>
               Select Genre
             </option>
+            {genres.map((genre) => {
+              return (
+                <option key={genre.id} value={genre.id}>
+                  {genre.name}
+                </option>
+              );
+            })}
           </select>
           <label>Select Movie Genre</label>
           <br></br>
