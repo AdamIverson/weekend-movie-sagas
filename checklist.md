@@ -81,3 +81,8 @@
       [ ] i don't even mind sql
       [ ] it's honestly so pleasant with its simplicity and absolutely unforgiving syntax
       [ ] bedtime
+
+  [ ] Sunday morning
+    [ ] I slept on it
+    [ ] Genres on the Details page should come from a table JOIN on the GET request
+    [ ] Adding Genre on the Form is probably an issue with identifying nested objects
