@@ -17,24 +17,26 @@ router.get("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
   console.log('in router.get /:id');
-  
   const movieToGet = req.params.id;
-  const query = `SELECT * FROM "movies_genres"
-  JOIN "movies"
-  ON "movies_genres"."movie_id"="movies"."id"
+  const query = `SELECT "movies"."title", "movies"."poster", "movies"."description", "genres"."name" FROM "movies"
+  JOIN "movies_genres"
+  ON "movies"."id"="movies_genres"."movie_id"
   JOIN "genres"
-  ON "movies_genres"."genre_id"="genres"."id" WHERE "movies"."id"=$1;`;
+  ON "movies_genres"."genre_id"="genres"."id" WHERE "movies"."id"=$1;`
   pool
     .query(query, [movieToGet])
-    .then((result) => {
-      console.log(result.rows);
-      res.send(result.rows);
-    })
+    .then((result) => 
+      res.send({
+        title: result.rows[0].title,
+        poster: result.rows[0].poster,
+        description: result.rows[0].description,
+        genre: result.rows[0].name,
+      }))
     .catch((err) => {
       console.log("ERROR: Get one movie", err);
       res.sendStatus(500);
-    });
-});
+    })
+  });
 
 router.post("/", (req, res) => {
   console.log(req.body);

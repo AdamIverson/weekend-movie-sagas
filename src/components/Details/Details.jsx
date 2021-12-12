@@ -9,11 +9,13 @@ function Details() {
   const history = useHistory();
   const dispatch = useDispatch();
 
+
   console.log("in DETAILS Movie", selectedMovie);
   console.log("in DETAILS GENRE SELECTED GENRE", selectedGenre);
-  // useEffect(() => {
-  //   dispatch({ type: "FETCH_GENRES" });
-  // }, []);
+  useEffect(() => {
+    dispatch({ type: "FETCH_GENRES" });
+    dispatch({ type: "FETCH_ID" });
+  }, []);
 
   const navigateHome = () => {
     history.push("/");
@@ -38,7 +40,13 @@ function Details() {
           <h2>{selectedMovie.title}</h2>
           <img src={selectedMovie.poster} />
           <p>{selectedMovie.description}</p>
-          <p>{selectedGenre.name}</p>
+          {selectedGenre.map((movie) => {
+            return (
+              <div key={movie.id}>
+                <p>{movie.name}</p>
+              </div>
+            )
+          })}
         </>
       ) : (
         <p>No Movie Selected</p>

@@ -15,6 +15,27 @@ import axios from "axios";
 function* rootSaga() {
   yield takeEvery("FETCH_MOVIES", fetchAllMovies);
   yield takeEvery("FETCH_GENRES", fetchAllGenres);
+  yield takeEvery("FETCH_ID", fetchId)
+  yield takeEvery("ADD_MOVIE", addMovie);
+}
+
+function* fetchId() {
+  try {
+    const id = yield axios.get(`/api/movie/${action.payload}`);
+    yield put({ type: "SET_SELECTED_MOVIE", payload: id });
+  } catch {
+    console.log("add movie error");
+  }
+}
+
+function* addMovie() {
+  try {
+    const movie = yield axios.post("/api/movie");
+    console.log("adding a dang movie", movie.data);
+    yield put({ type: "ADD_MOVIE", payload: movie.data });
+  } catch {
+    console.log("add movie error");
+  }
 }
 
 function* fetchAllMovies() {
@@ -31,10 +52,10 @@ function* fetchAllMovies() {
 function* fetchAllGenres() {
   try {
     const genres = yield axios.get("/api/genre");
-    console.log('get all:', genres.data);
+    console.log("get all:", genres.data);
     yield put({ type: "SET_GENRES", payload: genres.data });
   } catch {
-    console.log('get all error');
+    console.log("get all error");
   }
 }
 // Create sagaMiddleware
@@ -54,7 +75,7 @@ const movies = (state = [], action) => {
 const genres = (state = [], action) => {
   switch (action.type) {
     case "SET_GENRES":
-      console.log('in SET_GENRES', action.payload);
+      console.log("in SET_GENRES", action.payload);
       return action.payload;
     default:
       return state;
@@ -63,15 +84,15 @@ const genres = (state = [], action) => {
 
 //used to store selected movie
 const selectedMovie = (state = {}, action) => {
-  console.log('In SELECTED MOVIE *********************');
-  
-  switch(action.type) {
-    case 'SET_SELECTED_MOVIE':
+  console.log("In SELECTED MOVIE *********************");
+
+  switch (action.type) {
+    case "SET_SELECTED_MOVIE":
       return action.payload;
     default:
       return state;
   }
-}
+};
 
 // Create one store that all components can use
 const storeInstance = createStore(

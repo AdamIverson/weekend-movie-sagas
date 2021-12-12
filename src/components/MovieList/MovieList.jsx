@@ -14,7 +14,7 @@ function MovieList() {
     }, []);
 
     const handleSelectMovie = (movie) => {
-        dispatch({ type: 'SET_SELECTED_MOVIE', payload: movie});
+        dispatch({ type: 'FETCH_ID', payload: movie});
         history.push(`/details?id=${movie.id}`);
     }
 
