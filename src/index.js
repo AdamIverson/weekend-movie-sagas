@@ -19,6 +19,7 @@ function* rootSaga() {
   yield takeEvery("ADD_MOVIE", addMovie);
 }
 
+// ***FUTURE ADAM*** this will hopefully collect JOIN table
 // function* fetchId() {
 //   try {
 //     const id = yield axios.get(`/api/movie/${action.payload}`);
@@ -28,23 +29,25 @@ function* rootSaga() {
 //   }
 // }
 
+// to handle the AddMovie Form
 function* addMovie(action) {
   try {
     console.log(action.payload);
-    
-    const movie = yield
-      axios({
-        method: 'POST',
-        url: '/api/movie',
-        data: action.payload
-      })
-    // console.log("adding a dang movie", movie.data);
-   yield put({ type: "FETCH_MOVIES" });
+    // yell at the server to send it to db
+    const movie = yield;
+    axios({
+      method: "POST",
+      url: "/api/movie",
+      data: action.payload,
+    });
+    // refresh MovieList after new movie added
+    yield put({ type: "FETCH_MOVIES" });
   } catch {
     console.log("add movie error");
   }
 }
 
+// one Saga to fetch them all (movies) - for MovieList
 function* fetchAllMovies() {
   // get all movies from the DB
   try {
@@ -56,6 +59,7 @@ function* fetchAllMovies() {
   }
 }
 
+// one Saga to fetch them all (genres) - for Form drop-down
 function* fetchAllGenres() {
   try {
     const genres = yield axios.get("/api/genre");
@@ -78,6 +82,9 @@ const movies = (state = [], action) => {
   }
 };
 
+// This goes with the Saga commented out above
+// intended to collect movie/genres for detail page
+
 // const newMovie = (state = [], action) => {
 //   switch(action.type) {
 //     case "NEW_MOVIE":
@@ -88,7 +95,7 @@ const movies = (state = [], action) => {
 //   }
 // }
 
- // Used to store the movie genres
+// Used to store the movie genres
 const genres = (state = [], action) => {
   switch (action.type) {
     case "SET_GENRES":
