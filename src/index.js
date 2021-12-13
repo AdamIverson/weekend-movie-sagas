@@ -15,18 +15,18 @@ import axios from "axios";
 function* rootSaga() {
   yield takeEvery("FETCH_MOVIES", fetchAllMovies);
   yield takeEvery("FETCH_GENRES", fetchAllGenres);
-  // yield takeEvery("FETCH_ID", fetchId)
+  yield takeEvery("FETCH_ID", fetchId)
   yield takeEvery("ADD_MOVIE", addMovie);
 }
 
-// function* fetchId() {
-//   try {
-//     const id = yield axios.get(`/api/movie/${action.payload}`);
-//     yield put({ type: "SET_SELECTED_MOVIE", payload: id });
-//   } catch {
-//     console.log("add movie error");
-//   }
-// }
+function* fetchId() {
+  try {
+    const id = yield axios.get(`/api/movie/${action.payload}`);
+    yield put({ type: "SET_SELECTED_MOVIE", payload: id });
+  } catch {
+    console.log("add movie error");
+  }
+}
 
 function* addMovie(action) {
   try {
